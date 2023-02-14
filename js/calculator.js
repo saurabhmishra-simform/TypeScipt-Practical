@@ -1,5 +1,6 @@
 //screen value
 var screenValue = document.getElementById("display");
+var screenValue2 = document.getElementById("display2");
 //empty array
 var memoryArray = [];
 // define sign variable
@@ -74,12 +75,7 @@ function pointOperation() {
     }
     else {
         if (screenValue.value != "" && pointcounter == 1) {
-            if (signcounter == 0) {
-                screenValue.value += '0.';
-            }
-            else {
-                screenValue.value += '.';
-            }
+            (signcounter == 0) ? screenValue.value += '0.' : screenValue.value += '.';
         }
     }
     pointcounter = 0;
@@ -107,12 +103,7 @@ function bodmas(id) {
             break;
         case 'closebracket':
             if (bracatcounter != 0) {
-                if (lcount == 0) {
-                    screenValue.value += '0)';
-                }
-                else {
-                    screenValue.value += ')';
-                }
+                (lcount == 0) ? screenValue.value += '0)' : screenValue.value += ')';
                 bracatcounter -= 1;
                 lcount++;
                 if (bracatcounter == 0) {
@@ -157,7 +148,6 @@ function arithmetic(num) {
 //Arithmetic operation
 function operation(oper) {
     var chackScreen = screenValue.value.slice(-1);
-    console.log(chackScreen);
     switch (oper) {
         case 'backSpace': //backspace
             var num = screenValue.value.slice(0, -1);
@@ -166,6 +156,7 @@ function operation(oper) {
         case 'clear': //clear
             document.querySelector("#clear").addEventListener("click", function () {
                 screenValue.value = "";
+                screenValue2.value = "";
             });
             bodmasCounter = 0;
             plusmincount = 1;
@@ -176,6 +167,7 @@ function operation(oper) {
                 screenValue.value = '0';
             }
             else if (screenValue.value.includes("^")) {
+                screenValue2.value = screenValue.value;
                 xPowY();
             }
             else if (chackScreen == '+' || chackScreen == '-' || chackScreen == '*' || chackScreen == '/') {
@@ -185,31 +177,17 @@ function operation(oper) {
                 screenValue.value = "Cannot divide by zero";
             }
             else {
+                screenValue2.value = screenValue.value;
                 screenValue.value = eval(screenValue.value);
             }
             equalCounter = 1;
             break;
         case 'log': //log10
-            if (Number(screenValue.value) == 0) {
-                screenValue.value = "invalid input!";
-            }
-            if (Number(screenValue.value) < 0) {
-                screenValue.value = "invalid input!";
-            }
-            if (Number(screenValue.value) > 0) {
-                //screenValue.value = Math.log10(Number(screenValue.value)).toString();
-            }
+            var logResult = Math.log(Number(screenValue.value)) / Math.log(10);
+            (screenValue.value == "" || screenValue.value == "0" || screenValue.value < "0") ? screenValue.value = "Invalid Input" : screenValue.value = logResult.toString();
             break;
         case 'ln': //simple log
-            if (Number(screenValue.value) == 0) {
-                screenValue.value = "invalid input!";
-            }
-            if (Number(screenValue.value) < 0) {
-                screenValue.value = "invalid input!";
-            }
-            if (Number(screenValue.value) > 0) {
-                screenValue.value = Math.log(Number(screenValue.value)).toString();
-            }
+            (screenValue.value == "" || screenValue.value == "0" || screenValue.value < "0") ? screenValue.value = "Invalid Input" : screenValue.value = Math.log(Number(screenValue.value)).toString();
             break;
         case 'tenPowerX': //10^x
             screenValue.value = Math.pow(10, Number(screenValue.value)).toString();
@@ -301,33 +279,33 @@ function xPowY() {
 }
 //Trigonometry function
 function trigonometry(num) {
-    var n;
+    var trigonometryResult;
     var mathPI = Math.PI / 180;
     var result = Number(screenValue.value) * mathPI;
     switch (num) {
         case 'sin':
-            n = Math.sin(result);
-            screenValue.value = n.toString();
+            trigonometryResult = Math.sin(result);
+            screenValue.value = trigonometryResult.toString();
             break;
         case 'cos':
-            n = Math.cos(result);
-            screenValue.value = n.toString();
+            trigonometryResult = Math.cos(result);
+            screenValue.value = trigonometryResult.toString();
             break;
         case 'tan':
-            n = Math.tan(result);
-            screenValue.value = n.toString();
+            trigonometryResult = Math.tan(result);
+            screenValue.value = trigonometryResult.toString();
             break;
         case 'sinh':
-            n = 1 / Math.sin(result);
-            screenValue.value = n.toString();
+            trigonometryResult = 1 / Math.sin(result);
+            screenValue.value = trigonometryResult.toString();
             break;
         case 'cosh':
-            n = 1 / Math.cos(result);
-            screenValue.value = n.toString();
+            trigonometryResult = 1 / Math.cos(result);
+            screenValue.value = trigonometryResult.toString();
             break;
         case 'tanh':
-            n = 1 / Math.tan(result);
-            screenValue.value = n.toString();
+            trigonometryResult = 1 / Math.tan(result);
+            screenValue.value = trigonometryResult.toString();
             break;
     }
 }

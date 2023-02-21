@@ -1,6 +1,7 @@
-import {Calculator} from "./program.js"
+import {Calculator,Trigonometry,MemoryHandler} from "./program.js"
 let obj = new Calculator()
-
+let trigonoObj = new Trigonometry();
+let memoryObj = new MemoryHandler();
 //Input numbers
 document.getElementById("one").addEventListener('click', function () {
     obj.showNumber("one");
@@ -115,103 +116,51 @@ document.getElementById("factorial").addEventListener('click', function () {
 });
 //trigonometry
 document.getElementById("sin").addEventListener('click', function () {
-    obj.CalsiTrigonometry("sin");
+    trigonoObj.CalsiTrigonometry("sin");
 });
 document.getElementById("cos").addEventListener('click', function () {
-    obj.CalsiTrigonometry("cos");
+    trigonoObj.CalsiTrigonometry("cos");
 });
 document.getElementById("tan").addEventListener('click', function () {
-    obj.CalsiTrigonometry("tan");
+    trigonoObj.CalsiTrigonometry("tan");
 });
 document.getElementById("sec").addEventListener('click', function () {
-    obj.CalsiTrigonometry("sec");
+    trigonoObj.CalsiTrigonometry("sec");
 });
 document.getElementById("cosec").addEventListener('click', function () {
-    obj.CalsiTrigonometry("cosec");
+    trigonoObj.CalsiTrigonometry("cosec");
 });
 document.getElementById("cot").addEventListener('click', function () {
-    obj.CalsiTrigonometry("cot");
+    trigonoObj.CalsiTrigonometry("cot");
 });
 //functions
 document.getElementById("abslute").addEventListener('click', function () {
-    obj.calsiFunction("abslute");
+    trigonoObj.calsiFunction("abslute");
 });
 document.getElementById("squrX").addEventListener('click', function () {
-    obj.calsiFunction("squrX");
+    trigonoObj.calsiFunction("squrX");
 });
 document.getElementById("dolor").addEventListener('click', function () {
-    obj.calsiFunction("dolor");
+    trigonoObj.calsiFunction("dolor");
 });
 //memory function
 document.getElementById("mc").addEventListener('click', function () {
-    obj.calsiMemoryOperation("mc");
+    memoryObj.calsiMemoryOperation("mc");
 });
 document.getElementById("mr").addEventListener('click', function () {
-    obj.calsiMemoryOperation("mr");
+    memoryObj.calsiMemoryOperation("mr");
 });
 document.getElementById("mAdd").addEventListener('click', function () {
-    obj.calsiMemoryOperation("mAdd");
+    memoryObj.calsiMemoryOperation("mAdd");
 });
 document.getElementById("mSubtract").addEventListener('click', function () {
-    obj.calsiMemoryOperation("mSubtract");
+    memoryObj.calsiMemoryOperation("mSubtract");
 });
 document.getElementById("ms").addEventListener('click', function () {
-    obj.calsiMemoryOperation("ms");
+    memoryObj.calsiMemoryOperation("ms");
 });
 //twoND
 document.getElementById("twoND").addEventListener('click', function () {
-    obj.calsiMemoryOperation("twoND");
+    memoryObj.calsiMemoryOperation("twoND");
 });
 
-// function displayNum(id:any)
-// {
-//     obj.showNumber(id);
-// }
-// function arithmetic(id:any)
-// {
-//     obj.signOperation(id);
-// }
-// function operation(id:any)
-// {
-//     obj.calsiOperation(id);
-// }
-// function pointOperation()
-// {
-//     obj.calsiPointOperation();
-// }
-// function piOperation()
-// {
-//     obj.calsiPIOperation();
-// }
-// function EOperation()
-// {
-//     obj.calsiEOperation();
-// }
-// function bodmas(id:any)
-// {
-//     obj.calsiBodmas(id);
-// }
-// function plusMin(id:any)
-// {
-//     obj.CalsiPlusMin(id);
-// }
-// function factorial()
-// {
-//     obj.calsiFactorialFind();
-// }
-// function trigonometry(id:any)
-// {
-//     obj.CalsiTrigonometry(id);
-// }
-// function fun(id:any)
-// {
-//     obj.calsiFunction(id);
-// }
-// function memoryOperation(id:any)
-// {
-//     obj.calsiMemoryOperation(id);
-// }
-// function twoPowerND()
-// {
-//     obj.calsiTwoPowerND();
-// }

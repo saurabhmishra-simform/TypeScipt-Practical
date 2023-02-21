@@ -1,12 +1,12 @@
 export class Calculator {
     constructor() {
-        this.memoryArray = [];
         this.screenValue = document.getElementById("display");
         this.screenValue2 = document.getElementById("display2");
         this.signcounter = 0;
         this.pointcounter = 0;
         this.lcount = 0;
         this.bodmasCounter = 0;
+        this.bracatcounter = 0;
         this.plusmincount = 0;
         this.equalCounter = 0;
         this.btnVal = 0;
@@ -213,10 +213,17 @@ export class Calculator {
                 }
                 this.bracatcounter += 1;
                 this.bodmasCounter = 0;
+                console.log(this.bracatcounter);
                 break;
             case 'closebracket':
+                console.log(this.bracatcounter);
                 if (this.bracatcounter != 0) {
-                    (this.lcount == 0) ? this.screenValue.value += '0)' : this.screenValue.value += ')';
+                    if (this.lcount == 0) {
+                        this.screenValue.value += '0)';
+                    }
+                    else {
+                        this.screenValue.value += ')';
+                    }
                     this.bracatcounter -= 1;
                     this.lcount++;
                     if (this.bracatcounter == 0) {
@@ -269,6 +276,18 @@ export class Calculator {
         }
         this.signcounter = 0;
     }
+    calsiTwoPowerND() {
+        document.getElementById("square").value = (this.btnVal % 2 == 0) ? "x'" : "x²";
+        document.getElementById("squareRoot").value = (this.btnVal % 2 == 0) ? "&" : "2√x";
+        document.getElementById("openbracket").value = (this.btnVal % 2 == 0) ? "⇒" : "(";
+        document.getElementById("closebracket").value = (this.btnVal % 2 == 0) ? "∑" : ")";
+        this.btnVal++;
+    }
+}
+export class Trigonometry {
+    constructor() {
+        this.screenValue = document.getElementById("display");
+    }
     CalsiTrigonometry(num) {
         let trigonometryResult;
         var mathPI = Math.PI / 180;
@@ -313,6 +332,12 @@ export class Calculator {
                 this.screenValue.value = Number(this.screenValue.value) * 81.60 + " Rs";
                 break;
         }
+    }
+}
+export class MemoryHandler {
+    constructor() {
+        this.memoryArray = [];
+        this.screenValue = document.getElementById("display");
     }
     enableMemory(str) {
         let memoryClear = document.getElementById('mc');
@@ -379,12 +404,5 @@ export class Calculator {
             }
         }
         this.screenValue.value = ans.toString();
-    }
-    calsiTwoPowerND() {
-        document.getElementById("square").value = (this.btnVal % 2 == 0) ? "x'" : "x²";
-        document.getElementById("squareRoot").value = (this.btnVal % 2 == 0) ? "&" : "2√x";
-        document.getElementById("openbracket").value = (this.btnVal % 2 == 0) ? "⇒" : "(";
-        document.getElementById("closebracket").value = (this.btnVal % 2 == 0) ? "∑" : ")";
-        this.btnVal++;
     }
 }
